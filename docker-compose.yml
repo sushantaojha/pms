@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    container_name: pms-postgres-db
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432"
+  
+  backend:
+    build: ./backend
+    container_name: pms-backend-container
+    # entrypoint: ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+    # environment:
+    #   - DJANGO_SETTINGS_MODULE=backend.backend.setttings
+    depends_on:
+      - db
+    ports:
+      - "8001:8001"
+
+  frontend:
+    build: ./frontend
+    container_name: pms-frontend-container
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
