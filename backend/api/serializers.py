@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
 # As I have 3 models, hence I'm creating 3 serializers
+# this is new feature for another client1
 
 
 class ClientSerializer(serializers.ModelSerializer):

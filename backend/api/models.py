@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+# this is new feature for another client1
 
 class Client(models.Model):
     name = models.CharField(max_length=128, null=True)
